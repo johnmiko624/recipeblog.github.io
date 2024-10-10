@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Japanese Ramen by John Miko</title>
+    <style>
+        /* Reset and basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f6f7;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-image: linear-gradient(to right, #800080, #ff3b3f);
+            color: white;
+            text-align: center;
+            padding: 2rem 2rem; /* Reduced padding */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        header h1 {
+            font-size: 2.8rem; /* Reduced font size */
+            text-transform: uppercase;
+            letter-spacing: 3px; /* Adjusted letter-spacing */
+            animation: headerFade 1.5s ease-in-out forwards;
+            transform: translateY(-50px);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem; /* Adjusted margin */
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards 1.5s;
+        }
+
+        @keyframes headerFade {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            justify-content: space-between;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s ease;
+        }
+
+        /* Center content */
+        .content {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #800080;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: #ff3b3f;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        ol li {
+            margin-bottom: 0.75rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Side Feature Styles */
+        .feature {
+            width: 250px; /* Fixed width for side features */
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 0 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button with upgraded design */
+        .cta-button {
+            display: inline-block;
+            background-color: #ff3b3f;
+            padding: 1rem 3rem;
+            color: white;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 2rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e60026;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 59, 63, 0.5);
+        }
+
+        /* Recipe Timer Feature */
+        .timer {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #800080;
+        }
+
+        .timer button {
+            background-color: #800080;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 10px;
+            margin-left: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .timer button:hover {
+            background-color: #5a005a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #800080;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        footer p {
+            font-size: 1rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Scroll animations for sections */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature {
+                width: 100%; /* Full width on smaller screens */
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Delicious Japanese Ramen</h1>
+        <p>Your guide to authentic Japanese ramen recipes</p>
+    </header>
+
+    <main>
+        <div class="content">
+            <section id="recipe-intro">
+                <h2>Tonkotsu Ramen</h2>
+                <p>Welcome to my Japanese recipe blog! Today, I’ll guide you through an authentic **Tonkotsu Ramen** recipe, a rich and flavorful dish that originated in Fukuoka, Japan.</p>
+                <img src="pic.jpg" alt="A bowl of delicious Tonkotsu Ramen">
+            </section>
+
+            <section id="ingredients">
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>2 lbs pork bones</li>
+                    <li>6 cups water</li>
+                    <li>2 cloves garlic</li>
+                    <li>1 onion, quartered</li>
+                    <li>2 tbsp soy sauce</li>
+                    <li>1 tbsp miso paste</li>
+                    <li>Ramen noodles</li>
+                    <li>Boiled egg</li>
+                    <li>Nori (seaweed)</li>
+                    <li>Green onions for garnish</li>
+                </ul>
+            </section>
+
+            <section id="instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Boil the pork bones for 10 minutes to remove impurities.</li>
+                    <li>In a large pot, add water, garlic, and onion. Simmer with the pork bones for 4 hours.</li>
+                    <li>After 4 hours, strain the broth, add soy sauce, and miso paste.</li>
+                    <li>Boil the ramen noodles according to package instructions.</li>
+                    <li>In a bowl, add noodles, pour broth, and top with boiled egg, nori, and green onions.</li>
+                    <li>Serve hot and enjoy your homemade Tonkotsu Ramen!</li>
+                </ol>
+            </section>
+
+            <section class="timer">
+                <p>Set a timer for your cooking:</p>
+                <button id="start-timer">Start 4-Hour Timer</button>
+            </section>
+        </div>
+
+        <div class="feature" id="chef-tips">
+            <h3>Chef's Tips</h3>
+            <ul>
+                <li>For a creamier broth, add a small amount of heavy cream.</li>
+                <li>Experiment with different toppings like bamboo shoots or bean sprouts.</li>
+                <li>Use fresh noodles for the best texture.</li>
+                <li>Adjust the seasoning to your taste.</li>
+            </ul>
+        </div>
+
+        <div class="feature" id="popular-recipes">
+            <h3>Popular Recipes</h3>
+            <ul>
+                <li><a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://dishingouthealth.com/spicy-miso-ramen/&ved=2ahUKEwim_-i0n4SJAxUthlYBHe8rD6QQFnoECBMQAQ&usg=AOvVaw3X84iM-ysKs0MFapfL10Ep">Miso Ramen</a></li>
+                <li><a href="https://www.justonecookbook.com/shoyu-ramen/">Shoyu Ramen</a></li>
+                <li><a href="https://glebekitchen.com/tonkotsu-ramen-home/">Spicy Tonkotsu Ramen</a></li>
+                <li><a href="https://www.cookerru.com/zaru-soba/">Cold Soba Noodles</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 John Miko P. Sarsalijo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('section');
+
+        const options = {
+            root: null,
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Timer functionality
+        const timerButton = document.getElementById('start-timer');
+        timerButton.addEventListener('click', () => {
+            alert('Your 4-hour timer has started!');
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
